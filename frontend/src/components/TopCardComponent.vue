@@ -1,22 +1,7 @@
 <template>
-  <div
-    style="
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-    "
-  >
+  <div class="container">
     <q-card class="q-pa-md q-mb-md" flat>
-      <q-card-section
-        horizontal
-        style="
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        "
-      >
+      <q-card-section horizontal class="card-section">
         <q-card-section class="q-pa-none">
           <div class="text-h6 text-secondary">Today's Tasks</div>
         </q-card-section>
@@ -37,16 +22,7 @@
       </q-card-section>
     </q-card>
     <q-card class="q-px-md q-py-sm q-mb-md" flat>
-      <q-card-section
-        horizontal
-        dense
-        style="
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        "
-      >
+      <q-card-section horizontal dense class="card-section">
         <q-card-section class="q-pa-none">
           <q-input
             style="width: 400px"
@@ -96,15 +72,17 @@
 import { ref, computed, defineProps, defineEmits } from "vue";
 
 const props = defineProps({
-  rows: Array,
-  default: () => [],
+  activeRows: Array,
+  completedRows: Array,
 });
+
 const task = ref("");
 const time = ref("");
 const completedPercentage = computed(() => {
-  const rows = props.rows || [];
-  const totalTasks = rows.length;
-  const completedTasks = rows.filter((task) => task.isDone).length;
+  const rowsActive = props.activeRows || [];
+  const rowsComp = props.completedRows || [];
+  const totalTasks = rowsActive.length + rowsComp.length;
+  const completedTasks = props.completedRows.length;
   return totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0;
 });
 
@@ -112,10 +90,8 @@ const emit = defineEmits(["addRow"]);
 const addTask = () => {
   if (task.value != "") {
     const newTask = {
-      id: Date.now().toString(),
       desc: task.value,
       time: time.value,
-      isDone: false,
     };
     emit("addRow", newTask);
     task.value = "";
@@ -123,3 +99,18 @@ const addTask = () => {
   }
 };
 </script>
+<style scoped>
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.card-section {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+</style>

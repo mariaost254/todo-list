@@ -4,7 +4,7 @@ import HomeView from "../views/TodoListView.vue";
 const routes = [
   {
     path: "/",
-    name: "home",
+    name: "todo-list",
     component: HomeView,
   },
 ];

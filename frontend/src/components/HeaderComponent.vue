@@ -1,16 +1,7 @@
 <template>
   <q-header class="bg-dark text-white">
     <div>
-      <div
-        style="
-          display: flex;
-          max-width: 800px;
-          margin: 0 auto;
-          justify-content: center;
-          align-items: center;
-          padding: 0 1em;
-        "
-      >
+      <div class="header">
         <q-tabs
           v-model="tab"
           align="center"
@@ -31,9 +22,12 @@ import { ref } from "vue";
 const tab = ref("todo");
 </script>
 <style scoped>
-p {
-  font-weight: 500;
-  font-size: 18px;
-  margin-bottom: 0;
+.header {
+  display: flex;
+  max-width: 800px;
+  margin: 0 auto;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1em;
 }
 </style>

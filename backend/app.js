@@ -1,18 +1,23 @@
 const express = require('express');
-const app = express();
-const PORT = 3000;
+const dotenv = require('dotenv');
+const cors = require('cors');
+const connectDB = require('./config/db');
+const routes = require('./routes/taskRoutes');
+const errorHandler = require('./middleware/errorHandler');
 
-// Middleware to parse JSON
+dotenv.config();
+
+const app = express();
+const port = process.env.PORT;
+
+app.use(cors());
 app.use(express.json());
 
-// Example route
-app.get('/', (req, res) => {
-    res.send('Hello, Express!');
-});
+connectDB();
+app.use('/api/tasks', routes);
 
-// Start the server
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
+app.use(errorHandler);
 
-//nodemon app.js
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});
