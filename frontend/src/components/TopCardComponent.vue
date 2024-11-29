@@ -1,7 +1,22 @@
 <template>
-  <div class="container">
+  <div
+    style="
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+    "
+  >
     <q-card class="q-pa-md q-mb-md" flat>
-      <q-card-section horizontal class="card-section">
+      <q-card-section
+        horizontal
+        style="
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
         <q-card-section class="q-pa-none">
           <div class="text-h6 text-secondary">Today's Tasks</div>
         </q-card-section>
@@ -22,7 +37,16 @@
       </q-card-section>
     </q-card>
     <q-card class="q-px-md q-py-sm q-mb-md" flat>
-      <q-card-section horizontal dense class="card-section">
+      <q-card-section
+        horizontal
+        dense
+        style="
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        "
+      >
         <q-card-section class="q-pa-none">
           <q-input
             style="width: 400px"
@@ -99,18 +123,3 @@ const addTask = () => {
   }
 };
 </script>
-<style scoped>
-.container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-}
-
-.card-section {
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-</style>
