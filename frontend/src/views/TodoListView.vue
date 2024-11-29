@@ -1,16 +1,6 @@
 <template>
   <div>
-    <div
-      style="
-        display: flex;
-        max-width: 800px;
-        margin: 0 auto;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 1em;
-      "
-    >
+    <div class="container">
       <div
         style="display: flex; flex-direction: column; align-items: center"
         class="q-my-lg"
@@ -236,5 +226,14 @@ const removeRow = (taskId) => {
   background-color: inherit;
   font-size: 16px !important;
   font-weight: 600;
+}
+.container {
+  display: flex;
+  max-width: 800px;
+  margin: 0 auto;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
 }
 </style>
